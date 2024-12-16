@@ -44,9 +44,10 @@ Temps: 11.134626s
 Taille: 609 bytes
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: Ajouter la fonctionalité de cache d'hibernate
+test: curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions/1/proposals
+Temps: 11.305722s
+Taille: 609 bytes
 
 # Q14:  Proposition 3
 Description:
