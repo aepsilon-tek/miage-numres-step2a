@@ -48,12 +48,18 @@ Description: Ajouter la fonctionalité de cache d'hibernate
 test: curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions/1/proposals
 Temps: 11.305722s
 Taille: 609 bytes
-
+test: curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions/1/proposals
+Temps: 0.053735s
+Taille: 191 bytes
+test: curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/proposals/evaluate  -H 'accept: application/json'  -H 'content-type: application/json; charset=UTF-8' --data-raw '[{"id":1},{"id":2}]'
+Temps: 0.043117s
+Taille: 1 bytes
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
-
+Description: Enlever le service de traduction
+-lister toutes les questions:
+Temps: 0.363156s
+Taille: 256 bytes
+-
 # Q15:  Proposition 4
 Description: 
 Temps:
