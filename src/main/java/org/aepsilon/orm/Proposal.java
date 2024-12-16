@@ -14,17 +14,14 @@ public class Proposal extends PanacheEntityBase {
     public String label;
     public boolean correct;
 
-    // Getter pour id
     public Long getId() {
         return id;
     }
 
-    // Getter pour correct
     public boolean isCorrect() {
         return correct;
     }
 
-    // Getter pour label (optionnel)
     public String getLabel() {
         return label;
     }

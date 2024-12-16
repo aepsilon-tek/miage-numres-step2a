@@ -18,12 +18,12 @@ public class ProposalDto {
         this.correct = p.correct; // Inclure l'information correcte
     }
 
-    // Getter pour id
+
     public Long getId() {
         return id;
     }
 
-    // Getter pour correct
+ 
     public boolean isCorrect() {
         return correct;
     }
