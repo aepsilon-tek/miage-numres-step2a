@@ -35,19 +35,18 @@ Taille : 1 octet.
 
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+reponse : 2.2 MB
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
-
+Temps : 18,861605 secondes
+Taille : 883 octets
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps : 11,280289 secondes
+Taille : 609 octets
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps : 0,001944 secondes
+Taille : 1 octet
 
 # Q12:  Proposition 1
 Description:
