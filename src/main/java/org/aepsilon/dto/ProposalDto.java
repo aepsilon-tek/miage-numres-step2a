@@ -1,6 +1,5 @@
 package org.aepsilon.dto;
 
-import org.aepsilon.orm.Category;
 import org.aepsilon.orm.Proposal;
 
 import java.util.ArrayList;
