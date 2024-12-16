@@ -38,9 +38,10 @@ Temps:0.001920s
 Taille:1 bytes
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description:Supprimer les imports inutilisés 
+Temps:0.001632s
+Taille:1 bytes
+![alt text](image.png)
 
 # Q13:  Proposition 2
 Description:
