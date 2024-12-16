@@ -4,60 +4,79 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.aepsilon.dto.ProposalDto;
 import org.aepsilon.dto.QuestionDto;
-import org.aepsilon.dto.TranslationDto;
 import org.aepsilon.orm.Proposal;
 import org.aepsilon.orm.Question;
-import org.aepsilon.web.client.TranslateClient;
-import org.aepsilon.web.client.TranslateRequest;
-import org.aepsilon.web.client.TranslateResponse;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class QuizzService {
 
-    @Inject
-    TranslateService translateService;
+    /**
+     * Liste les questions avec pagination.
+     * Retourne les données nécessaires pour les DTO.
+     */
     public List<QuestionDto> listAllQuestions(int page, int size) {
-        List<Question> questions = Question.find("SELECT q.id, q.label FROM Question q")
-                                            .page(page, size)  
+        // Charger les questions paginées
+        List<Question> questions = Question.find("SELECT q FROM Question q")
+                                            .page(page, size)
                                             .list();
-    
-        return translateService.translateQuestions(questions);
-    }
-    
-    public QuestionDto loadQuestionById(Long questionId){
-        Question q = Question.findById(questionId);
-        return translateService.translateOneQuestion(q);
+
+        // Convertir les questions en DTO
+        return questions.stream()
+                        .map(q -> new QuestionDto(q, "fr")) // Création d'un DTO en français
+                        .collect(Collectors.toList());
     }
 
-    public List<ProposalDto> listProposals(Long questionId) {
-        // Filtrer directement les propositions associées à la question
-        List<Proposal> proposals = Proposal.find("question.id", questionId).list();
-        
-        // Traduire les propositions filtrées
-        return translateService.translateProposals(proposals);
-    }
-    
-
-
-    public Long evaluateProposals(List<ProposalDto> proposalsInput){
-        List<Proposal> proposals =  Proposal.listAll();
-        Long count =0L;
-        for(Proposal currentProposal:proposals){
-            for(ProposalDto currentProposalDto:proposalsInput){
-                if(currentProposal.id.equals(currentProposalDto.id)){
-                    if(currentProposal.correct) {
-                        count++;
-                    }
-                }
-            }
+    /**
+     * Charge une question par son ID.
+     * Retourne un DTO correspondant.
+     */
+    public QuestionDto loadQuestionById(Long questionId) {
+        Question question = Question.findById(questionId);
+        if (question == null) {
+            throw new IllegalArgumentException("Question introuvable avec l'ID : " + questionId);
         }
 
-        return count;
+        return new QuestionDto(question, "fr");
     }
 
+    /**
+     * Liste les propositions associées à une question spécifique.
+     * Retourne les données nécessaires pour les DTO.
+     */
+    public List<ProposalDto> listProposals(Long questionId) {
+        // Charger uniquement les propositions liées à la question
+        List<Proposal> proposals = Proposal.find("question.id", questionId).list();
+    
+        // Convertir les propositions en DTO
+        return proposals.stream()
+                        .map(p -> new ProposalDto(p, "fr"))
+                        .collect(Collectors.toList());
+    }
+    
+
+    /**
+     * Évalue une liste de propositions fournies et retourne le nombre de réponses correctes.
+     */
+    public Long evaluateProposals(List<ProposalDto> proposalsInput) {
+        if (proposalsInput == null || proposalsInput.isEmpty()) {
+            return 0L; // Aucun input, aucune évaluation
+        }
+    
+        // Extraire les IDs des propositions fournies
+        List<Long> inputIds = proposalsInput.stream()
+                                            .map(ProposalDto::getId)
+                                            .collect(Collectors.toList());
+    
+        // Récupérer les propositions correspondantes en une seule requête
+        List<Proposal> proposals = Proposal.find("id IN ?1", inputIds).list();
+    
+        // Compter les propositions correctes parmi celles récupérées
+        return proposals.stream()
+                        .filter(Proposal::isCorrect)
+                        .count();
+    }
+    
 }
