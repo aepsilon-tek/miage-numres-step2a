@@ -91,8 +91,10 @@ Amélioration proposée :
 - Optimiser le nombre de traductions effectuées en :
     - Traduisant uniquement dans les langues spécifiquement demandées
     - Réduisant les langues par défaut configurées dans application.properties
-Temps:
-Taille:
+
+Pour nous, seulement le français est nécessaire. On a pas besoin de la partie traduction.
+Time: 0.464554s
+Size: 571 bytes
 
 # Q15:  Proposition 4
 Description: Actuellement, l'application exécute une nouvelle requête à chaque fois qu'un même endpoint est appelé, même si les données n'ont pas changé. Cela génère :
