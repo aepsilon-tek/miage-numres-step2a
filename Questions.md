@@ -51,18 +51,19 @@ Size: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
+La valeur de la RSS utilisée par l'API Quarkus en mode natif est 2268 KB soit environ 2,3 MB
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Time: 17.690825s
+Size: 883 bytes
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Time: 12.701349s
+Size: 609 bytes
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Time: 0.001944s
+Size: 1 bytes
 
 # Q12:  Proposition 1
 Description:
