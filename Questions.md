@@ -1,11 +1,11 @@
 # Q1 : Décrire ce que renvoie la méthode qui liste les questions ?
-Réponse:
+Réponse:retourne une liste json de questions, chaque item contient un identifiant unique de la question, les traductions en plusieurs langues de la quesiton et la catégorie de la question 
 
 # Q2 : Décrire ce que renvoie la méthode qui liste les propositions d'une question ?
-Réponse:
+Réponse:retourne les propositions (en plusieurs langues) d'une qestion spécifique
 
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
-Réponse:
+Réponse:retourne le score des réponses données aux question, on a eu 0 puisque les 2 réponses aux questions 1 et 2 son fausses
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
