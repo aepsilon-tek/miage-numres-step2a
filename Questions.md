@@ -38,9 +38,10 @@ Temps: 0.002009s
 Taille: 1 bytes
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Dans listPorposals, on fait un selectAll() alors qu'on peut retirer les propositions d'un question avec .find()
+test: curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions/1/proposals
+Temps: 11.134626s
+Taille: 609 bytes
 
 # Q13:  Proposition 2
 Description:
@@ -53,6 +54,6 @@ Temps:
 Taille:
 
 # Q15:  Proposition 4
-Description:
+Description: 
 Temps:
 Taille:

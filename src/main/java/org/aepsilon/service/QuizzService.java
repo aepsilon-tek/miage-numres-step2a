@@ -4,14 +4,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.aepsilon.dto.ProposalDto;
 import org.aepsilon.dto.QuestionDto;
-import org.aepsilon.dto.TranslationDto;
 import org.aepsilon.orm.Proposal;
 import org.aepsilon.orm.Question;
-import org.aepsilon.web.client.TranslateClient;
-import org.aepsilon.web.client.TranslateRequest;
-import org.aepsilon.web.client.TranslateResponse;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +26,7 @@ public class QuizzService {
     }
 
     public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
+        List<Proposal> proposals = Proposal.find("question.id", questionId).list();
         List<Proposal> result = new ArrayList<>();
         for(Proposal currentProposal:proposals){
             if(currentProposal.id.equals(questionId)){
