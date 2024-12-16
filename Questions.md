@@ -14,7 +14,7 @@ Réponse:La méthode qui liste les propositions pour une question spécifique re
 [{"id":1,"translations":[{"language":"fr","value":"Brésil"},{"language":"en","value":"Brazil"},{"language":"it","value":"Brasile"}],"question":{"id":1,"translations":[{"language":"fr","value":"Quel est le pays le plus grand consommateur de café par habitant ?"},{"language":"en","value":"Which country is the largest per capita coffee consumer?"},{"language":"it","value":"Quale paese è il più grande consumatore di caffè pro capite?"}],"catgory":{"translations":[{"language":"fr","value":"Culture Générale"},{"language":"en","value":"General Culture"},{"language":"it","value":"Cultura generale"}]}}}]
 
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
-Reponse : La méthode qui évalue des réponses (evaluate) est appelée avec un ensemble d'identifiants de propositions sous forme de données JSON envoyées dans le corps de la requête HTTP.
+Reponse :La méthode evaluate renvoie une liste indiquant si chaque proposition soumise est correcte (true) ou incorrecte (false).
 
 gitpod /workspace/miage-numres-step2a (main) $ curl -w "\n" http://localhost:8080/quizz/proposals/evaluate  -H 'accept: application/json'  -H 'content-type: application/json; charset=UTF-8' --data-raw '[{"id":1},{"id":2}]' ~
 0
