@@ -9,18 +9,18 @@ Réponse:
 la méthode retourne 0, c’est-à-dire que les propositions transmises – id: 1 et id:2 – n’étaient pas les bonnes. 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
-216424
+
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:23.678254s
-Taille:883 bytes
+Temps:
+Taille:
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:12.770419s
-Taille:609 bytes
+Temps:
+Taille:
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:0.015602s
-Taille:1 bytes
+Temps:
+Taille:
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
