@@ -21,6 +21,8 @@ import java.util.List;
 @ApplicationScoped
 public class TranslateService {
 
+/*
+
     @ConfigProperty(name = "api-quizz.default-language", defaultValue = "fr")
     private String defaultLanguage;
     @ConfigProperty(name = "api-quizz.translations", defaultValue = "en")
@@ -101,5 +103,7 @@ public class TranslateService {
         p.question = translateOneQuestion(currentProposal.question);
         return p;
     }
+
+*/
 
 }

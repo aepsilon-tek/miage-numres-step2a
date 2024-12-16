@@ -21,17 +21,18 @@ public class QuizzService {
 
     @Inject
     TranslateService translateService;
-    public List<QuestionDto> listAllQuestions(){
+    public List<Question> listAllQuestions(){
         List<Question> questions =  Question.listAll();
-        return translateService.translateQuestions(questions);
+        return questions;
     }
 
-    public QuestionDto loadQuestionById(Long questionId){
+    public Question loadQuestionById(Long questionId){
         Question q = Question.findById(questionId);
-        return translateService.translateOneQuestion(q);
+        return q;
     }
 
-    public List<ProposalDto> listProposals(Long questionId){
+
+    public List<Proposal> listProposals(Long questionId){
         List<Proposal> proposals =  Proposal.listAll();
         List<Proposal> result = new ArrayList<>();
         for(Proposal currentProposal:proposals){
@@ -39,15 +40,25 @@ public class QuizzService {
                 result.add(currentProposal);
             }
         }
-        return translateService.translateProposals(result);
+        return result;
     }
 
 
-    public Long evaluateProposals(List<ProposalDto> proposalsInput){
+/*
+public List<ProposalDto> listProposals(Long questionId) {
+    // Charger uniquement les propositions correspondant à questionId
+    List<Proposal> proposals = Proposal.find("question.id", questionId).list();
+
+    // Traduire les propositions
+    return translateService.translateProposals(proposals);
+}
+*/
+
+    public Long evaluateProposals(List<Proposal> proposalsInput){
         List<Proposal> proposals =  Proposal.listAll();
         Long count =0L;
         for(Proposal currentProposal:proposals){
-            for(ProposalDto currentProposalDto:proposalsInput){
+            for(Proposal currentProposalDto:proposalsInput){
                 if(currentProposal.id.equals(currentProposalDto.id)){
                     if(currentProposal.correct) {
                         count++;
