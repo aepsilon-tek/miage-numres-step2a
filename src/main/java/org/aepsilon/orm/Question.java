@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 public class Question extends PanacheEntity {
     public String label;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CATEGORY_ID",nullable = false)
     public Category category;
 
