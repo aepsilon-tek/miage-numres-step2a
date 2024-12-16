@@ -14,19 +14,19 @@ Réponse: La méthode `evaluateProposals` renvoie un nombre (`Long`) représenta
 0
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: 222648 KB (environ 217 MB)
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 18.948450s
+Taille: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 13.261755s
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.016736s 
+Taille: 1 byte
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
