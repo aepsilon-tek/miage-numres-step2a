@@ -21,6 +21,9 @@ public class QuizzService {
 
     @Inject
     TranslateService translateService;
+    public List<QuestionDto> translateQuestions(List<Question> questions) {
+        return translateService.translateQuestions(questions);
+    }
     public List<QuestionDto> listAllQuestions(){
         List<Question> questions =  Question.listAll();
         return translateService.translateQuestions(questions);

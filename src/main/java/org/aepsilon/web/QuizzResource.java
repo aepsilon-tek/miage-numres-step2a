@@ -9,6 +9,7 @@ import org.aepsilon.dto.ProposalDto;
 import org.aepsilon.dto.QuestionDto;
 import org.aepsilon.service.QuizzService;
 import org.jboss.resteasy.reactive.RestPath;
+import org.aepsilon.orm.Question;
 
 import java.util.List;
 
@@ -23,12 +24,14 @@ public class QuizzResource {
      * curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions
      * @return
      */
-    @GET()
+    @GET
     @Path("questions")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionDto> listQuestion(){
-        Log.infof("In listQuestion");
-        return quizzService.listAllQuestions();
+    public List<QuestionDto> listQuestions(@QueryParam("page") @DefaultValue("0") int page,
+                                           @QueryParam("size") @DefaultValue("10") int size) {
+        Log.infof("Fetching questions - Page: %d, Size: %d", page, size);
+        List<Question> questions = Question.findAll().page(page, size).list();
+        return quizzService.translateQuestions(questions);
     }
 
 

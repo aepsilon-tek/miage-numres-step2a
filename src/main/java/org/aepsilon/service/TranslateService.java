@@ -17,6 +17,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @ApplicationScoped
 public class TranslateService {
@@ -30,50 +32,42 @@ public class TranslateService {
     @RestClient
     TranslateClient client;
 
-    public List<QuestionDto> translateQuestions(List<Question> questions) {
-        List<QuestionDto> result = new ArrayList<>();
-        for(Question currentQuestion:questions){
-            result.add(translateOneQuestion(currentQuestion));
-        }//End For Each
-        return result;
-    }
-
+    private Map<String, String> translationCache = new ConcurrentHashMap<>();
 
     public QuestionDto translateOneQuestion(Question currentQuestion) {
-            QuestionDto q = new QuestionDto(currentQuestion,defaultLanguage);
-            String[] languages = translatedLanguage.split(",");
-            for(String currentLanguage:languages){
-                TranslateRequest r = new TranslateRequest();
-                r.setSource(defaultLanguage);
-                r.setTarget(currentLanguage);
-                r.setQ(currentQuestion.label);
-                r.setAlternatives(0);
-                r.setFormat("text");
-                TranslateResponse rep = client.translate(r);
-                q.translations.add(new TranslationDto(rep,currentLanguage));
-            }//End For Each Question
-
-            q.catgory = translateOneCategory(currentQuestion.category);
+        QuestionDto q = new QuestionDto(currentQuestion, defaultLanguage);
+        String[] languages = translatedLanguage.split(",");
+        for (String currentLanguage : languages) {
+            String translatedText = getCachedTranslation(currentQuestion.label, currentLanguage);
+            q.translations.add(new TranslationDto(translatedText, currentLanguage));
+        }
+        q.catgory = translateOneCategory(currentQuestion.category);
         return q;
     }
 
-
-    public CategoryDto translateOneCategory(Category currentCategory) {
-        CategoryDto c = new CategoryDto(currentCategory,defaultLanguage);
-        String[] languages = translatedLanguage.split(",");
-        for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentCategory.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
-            c.translations.add(new TranslationDto(rep,currentLanguage));
-        }//End For Each Question
-        return c;
+    public String getCachedTranslation(String text, String targetLang) {
+        String cacheKey = text + ":" + targetLang;
+        return translationCache.computeIfAbsent(cacheKey, k -> {
+            TranslateRequest request = new TranslateRequest();
+            request.setQ(text);
+            request.setSource(defaultLanguage);
+            request.setTarget(targetLang);
+            request.setAlternatives(0);
+            request.setFormat("text");
+            TranslateResponse response = client.translate(request);
+            return response.getTranslatedText();
+        });
     }
 
+    public CategoryDto translateOneCategory(Category currentCategory) {
+        CategoryDto c = new CategoryDto(currentCategory, defaultLanguage);
+        String[] languages = translatedLanguage.split(",");
+        for (String currentLanguage : languages) {
+            String translatedText = getCachedTranslation(currentCategory.label, currentLanguage);
+            c.translations.add(new TranslationDto(translatedText, currentLanguage));
+        }
+        return c;
+    }
 
     public List<ProposalDto> translateProposals(List<Proposal> proposals) {
         List<ProposalDto> result = new ArrayList<>();
@@ -100,6 +94,14 @@ public class TranslateService {
 
         p.question = translateOneQuestion(currentProposal.question);
         return p;
+    }
+
+    public List<QuestionDto> translateQuestions(List<Question> questions) {
+        List<QuestionDto> result = new ArrayList<>();
+        for (Question currentQuestion : questions) {
+            result.add(translateOneQuestion(currentQuestion));
+        }
+        return result;
     }
 
 }
