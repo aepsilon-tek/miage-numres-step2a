@@ -25,8 +25,14 @@ public class QuizzService {
     }
 
     public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.find("question.id", questionId).list();
-        return translateService.translateProposals(proposals);
+        List<Proposal> proposals =  Proposal.listAll();
+        List<Proposal> result = new ArrayList<>();
+        for(Proposal currentProposal:proposals){
+            if(currentProposal.id.equals(questionId)){
+                result.add(currentProposal);
+            }
+        }
+        return translateService.translateProposals(result);
     }
 
 

@@ -44,16 +44,12 @@ Taille:1 bytes
 ![alt text](image.png)
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: la méthode listProposals parcours toute les propositions alors qu'elle peut récupérer directement les propositions en fonction de l'id de la question.
+Temps: 8.780450s
+Taille: 609 bytes
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: pour translate service on a du code qui est dupliqué on peut faire une méthode pour éviter le duplication de code.
+Temps: 11.784000s
+Taille:609 bytes
 
-# Q15:  Proposition 4
-Description:
-Temps:
-Taille:
