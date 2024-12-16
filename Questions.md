@@ -56,9 +56,10 @@ Temps: 0.043117s
 Taille: 1 bytes
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: Enlever le service de traduction
+-lister toutes les questions:
+Temps: 0.363156s
+Taille: 256 bytes
 
 # Q15:  Proposition 4
 Description:
