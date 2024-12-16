@@ -62,6 +62,6 @@ Temps: 0.363156s
 Taille: 256 bytes
 
 # Q15:  Proposition 4
-Description:
+Description: suppression des fichiers
 Temps:
 Taille:
