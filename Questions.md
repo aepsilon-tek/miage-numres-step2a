@@ -182,21 +182,19 @@ Temps: 0.002021s
 Taille: 1 bytes
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: améliorer la vitesse de renvoie des propositions des questions
+Proposal.listAll() récupère toutes les propositions de la base de données, même si on n’a besoin que de celles correspondant au questionId.
+Avec notre modification, on filtre maintenant la requete SQL par questionId et on récupère uniquement les propositions liées à la question, ce qui améliore la vitesse d'éxécution.
+Temps: 46.554758s
+Taille: 2456 bytes
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: On peut essayer de mettre en cache les réponses aux questions pour appeler les éléments plus tard lorsque c'est nécessaire, cela évite des appels multiples et redondants à la base.
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: On peut aussi mettre des indexes dans notre base de données pour avoir des accès plus rapides aux données.
 
 # Q15:  Proposition 4
-Description:
-Temps:
-Taille:
+Description: Mieux chalenger les besoins vu que le client demande une application en français alors que nous avons ici des traductions.
+Après les tests, les temps d'éxécutions sont beaucoup plus rapides. On a plus besoin des types "Dto" car il s'agit des traductions.
+Les questions s'affichent en 0.379103s, les propositions en 0.085595s avec ces modifications.
