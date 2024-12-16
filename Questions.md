@@ -61,21 +61,35 @@ Taille: 1 bytes
 
 
 # Q12:  Proposition 1
-Description:
+Description: On constate un gros temps pour la génération des questions, la première idée serait d'essayer d'optimiser la manière de requêter et répondre la  : Récupérer
+uniquement la question via son Id plutôt que de passer par la récupération complète de la liste des questions.
 Temps:
 Taille:
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: Challenger les besoins, commencer par ne pas ajouter des fonctionnalités que le client n'avait pas prévu de base : par exemple, faire un quiz uniquement en français. Retirer alors le service de traduction
+
+propositions : 
+
+Time: 0.010519s
+Size: 256 bytes
+
+questions :
+Time: 0.004490s
+Size: 256 bytes
+
+réponses : 
+
+Time: 0.090593s
+Size: 1 bytes
+
 
 # Q14:  Proposition 3
-Description:
+Description: Potentiellement optimiser le service de traduction lors de la méthode qui liste les questions, si nous avons un besoin de traduction
 Temps:
 Taille:
 
 # Q15:  Proposition 4
-Description:
+Description: optimisation via la mise en cache
 Temps:
 Taille:
