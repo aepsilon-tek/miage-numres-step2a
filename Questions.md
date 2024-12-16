@@ -11,19 +11,19 @@ Elle renvoie un entier :
 1 si elles sont correctes.
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+223940 KB
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps : 20.634345s
+Taille : 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps : 14.819877s
+Taille : 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps : 0.019468s
+Taille : 1 byte
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
