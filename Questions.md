@@ -6,7 +6,7 @@ Réponse:
 la méthode listProposals renvoie une liste d’objets de type ProposalDto. Chaque objet correspond à une proposition d’une question donnée, identifiée par son identifiant id. Les propositions sont également fournies sous forme de JSON. 
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
 Réponse:
-Par conséquent, la méthode retourne 0, c’est-à-dire que les propositions transmises – id: 1 et id:2 – n’étaient pas les bonnes. 
+la méthode retourne 0, c’est-à-dire que les propositions transmises – id: 1 et id:2 – n’étaient pas les bonnes. 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
 
