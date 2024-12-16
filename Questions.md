@@ -166,18 +166,20 @@ Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
+Mémoire physique utilisée (RSS) :
+	- 2324 Ko ≈ 2 Mo
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Temps: 15.476267s
+Taille: 883 bytes
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps: 11.282712s
+Taille: 609 bytes
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps: 0.002021s
+Taille: 1 bytes
 
 # Q12:  Proposition 1
 Description:
