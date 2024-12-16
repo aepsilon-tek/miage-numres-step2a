@@ -12,15 +12,16 @@ import org.aepsilon.web.client.TranslateRequest;
 import org.aepsilon.web.client.TranslateResponse;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import io.quarkus.cache.CacheResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
 public class QuizzService {
-
     @Inject
     TranslateService translateService;
+    @CacheResult(cacheName = "questions-cache")
     public List<QuestionDto> listAllQuestions(){
         List<Question> questions =  Question.listAll();
         return translateService.translateQuestions(questions);
@@ -31,16 +32,12 @@ public class QuizzService {
         return translateService.translateOneQuestion(q);
     }
 
-    public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
-        return translateService.translateProposals(result);
+    public List<ProposalDto> listProposals(Long questionId) {
+        // Récupérer directement les propositions associées à la question en base
+        List<Proposal> proposals = Proposal.find("question.id", questionId).list();
+        return translateService.translateProposals(proposals);
     }
+    
 
 
     public Long evaluateProposals(List<ProposalDto> proposalsInput){

@@ -52,22 +52,37 @@ Taille : 609 bytes
 Temps : 0.001839 s
 Taille : 1 byte
 
-# Q12:  Proposition 1
-Description:
+# Q12:  Proposition 1 : Réduction de la taille des réponses JSON
+Description: 
+Réduction de la taille des réponses JSON en filtrant les traductions inutiles grâce à un paramètre `lang`. Ce paramètre permet de retourner uniquement la traduction correspondant à la langue spécifiée par le client, réduisant ainsi la taille des données transmises. Si aucun paramètre `lang` n'est fourni, toutes les traductions sont renvoyées.
+
 Temps:
+- Avant amélioration (sans filtre) : 23.581519 s
+- Après amélioration (avec `lang=fr`) : 17.794422 s
+
 Taille:
+- Avant amélioration (sans filtre) : 883 bytes
+- Après amélioration (avec `lang=fr`) : 558 bytes
 
 # Q13:  Proposition 2
 Description:
+Mise en cache des réponses pour l'endpoint `/questions` afin de réduire les temps de réponse et la charge sur la base de données. Le cache est nommé `questions-cache`, avec une taille maximale de 100 entrées et une expiration de 60 secondes.
+
 Temps:
-Taille:
+- Avant amélioration (sans cache) : 26.231484s
+- Après amélioration (avec cache) : 0.007172s
+Taille: 
+Les réponses ont la même taille : 883 bytes.
+
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: Suppression des imports inutilisés dans le projet pour améliorer la lisibilité et réduire la taille des fichiers compilés.
+Temps:Aucun impact sur l'exécution
+Taille:Réduction légère de la taille des fichiers .class générés.
 
 # Q15:  Proposition 4
-Description:
-Temps:
+Description: Réduire les niveaux de log pour éviter d'afficher des logs inutiles en production, ce qui allège la consommation des ressources et le bruit dans la console.
+Temps:Pas de changement significatif, mais moins de ressources CPU utilisées pour l'écriture des logs.
 Taille:
+- Avant l'amélioration : Log complet avec beaucoup de lignes (INFO, DEBUG).
+- Après amélioration : Log réduit (seules les erreurs critiques sont affichées).

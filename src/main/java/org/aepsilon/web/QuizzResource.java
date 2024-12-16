@@ -24,12 +24,24 @@ public class QuizzResource {
      * @return
      */
     @GET()
-    @Path("questions")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionDto> listQuestion(){
-        Log.infof("In listQuestion");
-        return quizzService.listAllQuestions();
+@Path("questions")
+@Produces(MediaType.APPLICATION_JSON)
+public List<QuestionDto> listQuestion(@QueryParam("lang") String lang) {
+    Log.infof("In listQuestion with lang=%s", lang);
+    List<QuestionDto> questions = quizzService.listAllQuestions();
+
+    // Filtrer les traductions si une langue est spécifiée
+    if (lang != null && !lang.isEmpty()) {
+        questions.forEach(q -> q.setTranslations(
+            q.getTranslations().stream()
+                .filter(t -> t.getLanguage().equals(lang))  // Garder uniquement les traductions pour la langue spécifiée
+                .toList()
+        ));
     }
+
+    return questions;
+}
+    
 
 
     /**

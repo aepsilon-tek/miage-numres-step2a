@@ -34,4 +34,12 @@ public class TranslationDto {
         language=lg;
         value = r.getTranslatedText();
     }
+     // Getter et setter
+     public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 }
