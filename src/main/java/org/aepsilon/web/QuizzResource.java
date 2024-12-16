@@ -25,11 +25,14 @@ public class QuizzResource {
      */
     @GET()
     @Path("questions")
+
     @Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionDto> listQuestion(){
-        Log.infof("In listQuestion");
-        return quizzService.listAllQuestions();
+    public List<QuestionDto> listQuestion(@QueryParam("page") @DefaultValue("0") int page,
+                                           @QueryParam("size") @DefaultValue("10") int size) {
+        Log.infof("In listQuestion with page=%d, size=%d", page, size);
+        return quizzService.listAllQuestions(page, size);
     }
+    
 
 
     /**

@@ -1,5 +1,5 @@
 # Q1 : Décrire ce que renvoie la méthode qui liste les questions ?
-Réponse:La méthode qui liste les questions renvoie un ensemble de questions récupérées depuis la base de données. Chaque question contient des informations telles que son id, son CATEGORY_ID (la catégorie à laquelle elle appartient), et son label
+Réponse:La méthode qui liste les questions renvoie un ensemble de questions récupérées depuis la base de données. Chaque question contient des informations telles que son id, son CATEGORY_ID , et son label
 
 [{"id":1,"translations":[{"language":"fr","value":"Quel est le pays le plus grand consommateur de café par habitant ?"},{"language":"en","value":"Which country is the largest per capita coffee consumer?"},{"language":"it","value":"Quale paese è il più grande consumatore di caffè pro capite?"}],"catgory":{"translations":[{"language":"fr","value":"Culture Générale"},{"language":"en","value":"General Culture"},{"language":"it","value":"Cultura generale"}]}},{"id":2,"translations":[{"language":"fr","value":"Quel animal est le plus dangereux pour l’Homme ?"},{"language":"en","value":"Which animal is the most dangerous for man?"},{"language":"it","value":"Quale animale è il più pericoloso per l'uomo?"}],"catgory":{"translations":[{"language":"fr","value":"Culture Générale"},{"language":"en","value":"General Culture"},{"language":"it","value":"Cultura generale"}]}}]
 # Q2 : Décrire ce que renvoie la méthode qui liste les propositions d'une question ?
@@ -48,22 +48,40 @@ Taille : 609 octets
 Temps : 0,001944 secondes
 Taille : 1 octet
 
-# Q12:  Proposition 1
+# Q12:  Proposition 1 :Réduction des champs inutiles dans la méthode qui liste les questions
 Description:
+- La méthode retourne toutes les relations (translations, category), ce qui alourdit la taille de la réponse et augmente le temps de traitement.
+- Pas de pagination pour limiter le volume de données.
+
+Solution proposée :
+   - Modifier la requête pour ne retourner que les champs nécessaires (`id` et `label`).
+   - Ajouter une pagination pour limiter le nombre de questions retournées à chaque appel.
+   
+Temps: 1.835569s
+Taille:2748 bytes
+
+# Q13:  Proposition 2 Optimisation via le Cache côté serveur
+Description:
+L'API qui liste les questions est fréquemment appelée et, si les données changent rarement, une mise en cache des résultats peut réduire considérablement :
+    -Le temps de réponse : Les données sont servies directement depuis le cache.
+    -La charge sur la base de données : Réduit les appels inutiles.
 Temps:
 Taille:
 
-# Q13:  Proposition 2
-Description:
+# Q14:  Proposition 3 Amélioration de la méthode evaluateProposals
+Description:La méthode actuelle charge toutes les propositions en mémoire via Proposal.listAll(), ce qui est inefficace pour des bases de données volumineuses.
+Elle utilise des boucles imbriquées pour comparer les propositions, ce qui ralentit les performances.
+
+Solution : 
+-Charger uniquement les propositions nécessaires en filtrant directement via une requête SQL (id IN ?1).
+-Éliminer les boucles imbriquées pour améliorer la lisibilité et les performances.
+
 Temps:
 Taille:
 
-# Q14:  Proposition 3
-Description:
-Temps:
-Taille:
-
-# Q15:  Proposition 4
-Description:
+# Q15:  Proposition 4 Éliminer la partie translate
+Description:Actuellement, le service effectue des traductions via un client externe (TranslateService) pour répondre dans plusieurs langues.
+Si le besoin est exclusivement un quiz en français, cette fonctionnalité est inutile et alourdit les performances avec des appels REST externes.
+En éliminant les traductions, on simplifie le code et réduit les dépendances.
 Temps:
 Taille:

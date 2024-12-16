@@ -21,26 +21,27 @@ public class QuizzService {
 
     @Inject
     TranslateService translateService;
-    public List<QuestionDto> listAllQuestions(){
-        List<Question> questions =  Question.listAll();
+    public List<QuestionDto> listAllQuestions(int page, int size) {
+        List<Question> questions = Question.find("SELECT q.id, q.label FROM Question q")
+                                            .page(page, size)  
+                                            .list();
+    
         return translateService.translateQuestions(questions);
     }
-
+    
     public QuestionDto loadQuestionById(Long questionId){
         Question q = Question.findById(questionId);
         return translateService.translateOneQuestion(q);
     }
 
-    public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
-        return translateService.translateProposals(result);
+    public List<ProposalDto> listProposals(Long questionId) {
+        // Filtrer directement les propositions associées à la question
+        List<Proposal> proposals = Proposal.find("question.id", questionId).list();
+        
+        // Traduire les propositions filtrées
+        return translateService.translateProposals(proposals);
     }
+    
 
 
     public Long evaluateProposals(List<ProposalDto> proposalsInput){
