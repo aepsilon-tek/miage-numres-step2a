@@ -22,19 +22,23 @@ Elle prend en entrée des identifiants de réponses (ex. {"id":1} et {"id":2}) e
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
 
+    9811 214448 java -jar target/quarkus-app/quarkus-run.jar
+    10006  2308 grep --color=auto quarkus-run
 
+214 KB
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 20.630939s
+Taille: 883 bytes
+
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 11.428506s
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.055146s
+Taille: 1 bytes 
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
