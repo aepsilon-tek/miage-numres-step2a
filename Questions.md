@@ -21,34 +21,36 @@ Dans l'exemple, le score est 0, ce qui signifie que les propositions {"id":1} et
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
-La RSS (Resident Set Size), qui représente la mémoire utilisée par le processus Quarkus, est de :
-243248 Ko (environ 237,5 Mo).
+L'empreinte mémoire (RSS) utilisée par le processus Quarkus en mode JVM est de :
+216100 Ko (environ 211,1 Mo).
+
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
 Temps : 0.004685 s
 Taille : 125 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps : 0.004565 s
-Taille : 125 bytes
+Temps : 22.773066 s
+Taille : 883 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps : 0.004853 s
-Taille : 73 bytes
+Temps : 0.016939 s
+Taille : 1 byte
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
-
+L'empreinte mémoire (RSS) utilisée par l'API Quarkus en mode natif est de :
+77156 Ko (environ 75,4 Mo).
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Temps : 14.375920 s
+Taille : 883 bytes
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps : 11.655834 s
+Taille : 609 bytes
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps : 0.001839 s
+Taille : 1 byte
 
 # Q12:  Proposition 1
 Description:
