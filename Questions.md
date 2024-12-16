@@ -26,19 +26,19 @@ Temps : 0.019468s
 Taille : 1 byte
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+99548 KB
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Temps : 17.994868s
+Taille : 883 bytes
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps : 11.708591s
+Taille : 609 bytes
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps : 0.001814s
+Taille : 1 byte
 
 # Q12:  Proposition 1
 Description:
