@@ -1,17 +1,28 @@
 package org.aepsilon.orm;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase; // Import nécessaire
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
-public class Proposal extends PanacheEntity {
+public class Proposal extends PanacheEntityBase {
+    @Id
+    @GeneratedValue
+    public Long id;
+
     public String label;
     public boolean correct;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "QUESTION_ID",nullable = false)
-    public Question question;
+    public Long getId() {
+        return id;
+    }
+
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    public String getLabel() {
+        return label;
+    }
 }

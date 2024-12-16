@@ -4,59 +4,63 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.aepsilon.dto.ProposalDto;
 import org.aepsilon.dto.QuestionDto;
-import org.aepsilon.dto.TranslationDto;
 import org.aepsilon.orm.Proposal;
 import org.aepsilon.orm.Question;
-import org.aepsilon.web.client.TranslateClient;
-import org.aepsilon.web.client.TranslateRequest;
-import org.aepsilon.web.client.TranslateResponse;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class QuizzService {
 
-    @Inject
-    TranslateService translateService;
-    public List<QuestionDto> listAllQuestions(){
-        List<Question> questions =  Question.listAll();
-        return translateService.translateQuestions(questions);
+
+    public List<QuestionDto> listAllQuestions(int page, int size) {
+   
+        List<Question> questions = Question.find("SELECT q FROM Question q")
+                                            .page(page, size)
+                                            .list();
+
+        return questions.stream()
+                        .map(q -> new QuestionDto(q, "fr")) // Création d'un DTO en français
+                        .collect(Collectors.toList());
     }
 
-    public QuestionDto loadQuestionById(Long questionId){
-        Question q = Question.findById(questionId);
-        return translateService.translateOneQuestion(q);
-    }
-
-    public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
-        return translateService.translateProposals(result);
-    }
-
-
-    public Long evaluateProposals(List<ProposalDto> proposalsInput){
-        List<Proposal> proposals =  Proposal.listAll();
-        Long count =0L;
-        for(Proposal currentProposal:proposals){
-            for(ProposalDto currentProposalDto:proposalsInput){
-                if(currentProposal.id.equals(currentProposalDto.id)){
-                    if(currentProposal.correct) {
-                        count++;
-                    }
-                }
-            }
+ 
+    public QuestionDto loadQuestionById(Long questionId) {
+        Question question = Question.findById(questionId);
+        if (question == null) {
+            throw new IllegalArgumentException("Question introuvable avec l'ID : " + questionId);
         }
 
-        return count;
+        return new QuestionDto(question, "fr");
     }
 
+    public List<ProposalDto> listProposals(Long questionId) {
+       
+        List<Proposal> proposals = Proposal.find("question.id", questionId).list();
+    
+        
+        return proposals.stream()
+                        .map(p -> new ProposalDto(p, "fr"))
+                        .collect(Collectors.toList());
+    }
+    
+
+
+    public Long evaluateProposals(List<ProposalDto> proposalsInput) {
+        if (proposalsInput == null || proposalsInput.isEmpty()) {
+            return 0L; 
+        }
+    
+        List<Long> inputIds = proposalsInput.stream()
+                                            .map(ProposalDto::getId)
+                                            .collect(Collectors.toList());
+    
+        List<Proposal> proposals = Proposal.find("id IN ?1", inputIds).list();
+    
+        return proposals.stream()
+                        .filter(Proposal::isCorrect)
+                        .count();
+    }
+    
 }
