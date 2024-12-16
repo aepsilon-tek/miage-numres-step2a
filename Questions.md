@@ -19,19 +19,20 @@ Reponse :La méthode evaluate renvoie une liste indiquant si chaque proposition 
 gitpod /workspace/miage-numres-step2a (main) $ curl -w "\n" http://localhost:8080/quizz/proposals/evaluate  -H 'accept: application/json'  -H 'content-type: application/json; charset=UTF-8' --data-raw '[{"id":1},{"id":2}]' ~
 0
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse:La mémoire RSS utilisée par l'API Quarkus en mode JVM est 225,9 Mo.
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps de la réponse :Le temps total de la réponse de la méthode qui liste les questions est 27,352061 secondes.
+
+Taille de la réponse :La taille de la réponse est 883 octets.
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
-
+Temps : 8,635514 secondes.
+Taille : 609 octets.
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps : 0,017867 secondes.
+Taille : 1 octet.
+
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
