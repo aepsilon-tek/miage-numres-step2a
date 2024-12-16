@@ -8,19 +8,19 @@ Réponse:retourne les propositions (en plusieurs langues) d'une qestion spécifi
 Réponse:retourne le score des réponses données aux question, on a eu 0 puisque les 2 réponses aux questions 1 et 2 son fausses
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse:180,92 Mo
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 26.918207s
+Taille: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 11.994623s
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.017259s
+Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
