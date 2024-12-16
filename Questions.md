@@ -35,18 +35,19 @@ Le curl que l'on envoit répond Colombie cependant la réponse attendu est Finla
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
+La valeur de la RSS utilisée par l'api quarkus en mode JVM est de : 210608 KB soit environ 210,6 MB.
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Time: 22.350903s
+Size: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Time: 12.801599s
+Size: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Time: 0.023343s
+Size: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
