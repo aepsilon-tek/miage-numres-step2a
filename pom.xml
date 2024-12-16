@@ -54,6 +54,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-client-jackson</artifactId>
         </dependency>
+        
     </dependencies>
 
     <build>

@@ -19,4 +19,7 @@ public class ProposalDto {
         translations =  new ArrayList<>();
         translations.add(new TranslationDto(p,lg));
     }
+    public Long getId() {
+        return id;
+    }
 }

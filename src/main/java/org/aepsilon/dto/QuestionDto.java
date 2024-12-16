@@ -18,4 +18,13 @@ public class QuestionDto {
         translations =  new ArrayList<>();
         translations.add(new TranslationDto(q,lg));
     }
+    // Getter et setter pour translations
+    public List<TranslationDto> getTranslations() {
+        return translations;
+    }
+
+    public void setTranslations(List<TranslationDto> translations) {
+        this.translations = translations;
+    }
+    
 }
