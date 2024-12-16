@@ -83,5 +83,6 @@ Taille:
 Description:Actuellement, le service effectue des traductions via un client externe (TranslateService) pour répondre dans plusieurs langues.
 Si le besoin est exclusivement un quiz en français, cette fonctionnalité est inutile et alourdit les performances avec des appels REST externes.
 En éliminant les traductions, on simplifie le code et réduit les dépendances.
-Temps:
-Taille:
+Temps: pour liste proposals 
+Time: 0.2s
+Size: 6474 bytes
