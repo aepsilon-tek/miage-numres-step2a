@@ -44,21 +44,40 @@ Temps: 0.002121s
 Taille: 1 byte
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Optimiser la methode `listProposals` en utilisant un filtre SQL au lieu d'un filtre Java, mais aussi en enlevant la création de liste non nécéssaire et d'utiliser directement la requete avec la condition WHERE.
+Temps: 5.123s (vs 13.261755s)
+Taille: 609 bytes
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: Optimiser evaluateProposals avec requête SQL directe :
+- Remplacement double boucle par requête SQL IN
+- Utilisation du count natif
+- Réduction charge mémoire
+Temps: 0.001523s (vs 0.016736s)
+Taille: 1 byte (vs 1 byte)
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: Enlever tous les imports et variables inutiles
+Temps: negligible
+Taille: negligible
 
 # Q15:  Proposition 4
-Description:
-Temps:
-Taille:
+Optimize the translation service by implementing caching for translations to reduce API calls :
+- Add caching annotations to TranslateService
+- Cache translated values using question/proposal IDs as keys
+- Configure cache timeouts in application.properties
+Temps: 0.842s (vs 18.948450s)
+Taille: 883 bytes (vs 883 bytes)
+
+# Q16:  Proposition 5
+Description: Remove the translation system since the quiz is already in French :
+1. Remove unused translation-related code and dependencies:
+- Remove TranslateService
+- Remove TranslateClient
+- Remove translation configuration from application.properties
+2. Simplify DTOs to work with direct labels instead of translations:
+- Update QuestionDto
+- Update ProposalDto
+- Remove TranslationDto
+Temps: 0.19s (vs 18.948450s)
+Taille: 704 bytes (vs 883 bytes) pour proposales
