@@ -34,36 +34,36 @@ Temps:0.058426s
 Taille:1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse:2280
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Temps:21.970081s
+Taille:883 bytes
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps:13.492778s
+Taille:609 bytes
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps:0.002186s
+Taille:1 bytes
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: réduire la complexité quand c'est possible
+Temps:12.505275s
+Taille:609 bytes
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: enlever les imports et déclaration inutiles
+Temps:12.653831s
+Taille:609 bytes
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: la mise en cache 
+Temps: 18.594660s
+Taille: 609 bytes
 
 # Q15:  Proposition 4
-Description:
-Temps:
-Taille:
+Description: supprimer la partie traduction qui ne fait pas partie des besoins du client 
+Temps:0.595913s
+Taille:191 bytes

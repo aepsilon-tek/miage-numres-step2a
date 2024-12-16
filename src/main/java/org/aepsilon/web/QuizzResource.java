@@ -7,6 +7,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.aepsilon.dto.ProposalDto;
 import org.aepsilon.dto.QuestionDto;
+import org.aepsilon.orm.Proposal;
+import org.aepsilon.orm.Question;
 import org.aepsilon.service.QuizzService;
 import org.jboss.resteasy.reactive.RestPath;
 
@@ -26,7 +28,7 @@ public class QuizzResource {
     @GET()
     @Path("questions")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionDto> listQuestion(){
+    public List<Question> listQuestion(){
         Log.infof("In listQuestion");
         return quizzService.listAllQuestions();
     }
@@ -39,7 +41,7 @@ public class QuizzResource {
     @GET()
     @Path("questions/{id}/proposals")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProposalDto> listProposals(@RestPath Long id){
+    public List<Proposal> listProposals(@RestPath Long id){
         Log.infof("In listProposals  for questionId=%d",id);
         return quizzService.listProposals(id);
     }
@@ -54,7 +56,7 @@ public class QuizzResource {
     @Path("proposals/evaluate")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public long evaluate(List<ProposalDto> rep){
+    public long evaluate(List<Proposal> rep){
         Log.infof("In evaluate ");
         return quizzService.evaluateProposals(rep);
     }
