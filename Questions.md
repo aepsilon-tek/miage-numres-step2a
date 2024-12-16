@@ -65,22 +65,42 @@ Size: 609 bytes
 Time: 0.001944s
 Size: 1 bytes
 
+algorithmie / maniere dont les endpoints ça a été implémenté sur la liste des questions (faire moins lourds)
+
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Optimisation de la méthode listProposals
+Time: 45.921063s
+Size: 2456 bytes
+
+PS : Valeur un peu biaisés mais c'est de l'optimisation car on ne va pas récupérer la terre entière mais seulement ce qui nous intéresse.
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: Le champ question dans l’entité Proposal est actuellement configuré avec FetchType.EAGER. C'est un pb car ça va effectuer une requête supplémentair pour récupérer les données associées de l'entité Question.
+
+Solution : On remplace FetchType.EAGER par FetchType.LAZY
+
+Time: 43.874552s
+Size: 2456 bytes
 
 # Q14:  Proposition 3
-Description:
+Description: Actuellement, chaque entité (questions, propositions, catégories) est traduite dans toutes les langues spécifiées. Cela entraîne :
+- Une surcharge inutile lorsque toutes les traductions ne sont pas nécessaires.
+- Une augmentation du temps de traitement et des appels réseau.
+
+Amélioration proposée :
+- Optimiser le nombre de traductions effectuées en :
+    - Traduisant uniquement dans les langues spécifiquement demandées
+    - Réduisant les langues par défaut configurées dans application.properties
 Temps:
 Taille:
 
 # Q15:  Proposition 4
-Description:
+Description: Actuellement, l'application exécute une nouvelle requête à chaque fois qu'un même endpoint est appelé, même si les données n'ont pas changé. Cela génère :
+- Des appels inutiles à la base de données ou au service externe.
+- Une augmentation du temps de réponse et de la charge réseau.
+
+Amélioration proposée :
+- Mettre en place un mécanisme de cache en mémoire pour stocker temporairement les réponses fréquemment demandées
+
 Temps:
 Taille:

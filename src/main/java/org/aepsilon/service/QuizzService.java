@@ -31,7 +31,7 @@ public class QuizzService {
         return translateService.translateOneQuestion(q);
     }
 
-    public List<ProposalDto> listProposals(Long questionId){
+    /*public List<ProposalDto> listProposals(Long questionId){
         List<Proposal> proposals =  Proposal.listAll();
         List<Proposal> result = new ArrayList<>();
         for(Proposal currentProposal:proposals){
@@ -40,7 +40,15 @@ public class QuizzService {
             }
         }
         return translateService.translateProposals(result);
+    }*/
+
+    public List<ProposalDto> listProposals(Long questionId) {
+        // On va récup que les questions qu'on veut en fonction de l'id
+        List<Proposal> proposals = Proposal.list("question.id", questionId);
+    
+        return translateService.translateProposals(proposals);
     }
+    
 
 
     public Long evaluateProposals(List<ProposalDto> proposalsInput){
