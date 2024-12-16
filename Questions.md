@@ -8,22 +8,22 @@ Réponse: elles renvoient la liste de toutes les propositions dans toutes les la
 Réponse: La méthode retourne un entier de type Long qui représente le nombre de réponses correctes. Une réponse est correcte si son ID correspond à une proposition en base de données dont l’attribut correct est vrai.
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: 219732
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 18.864109s
+Taille: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 13.098015s
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.018084s
+Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: 
 
 # Q9: Temps et  taille  réponse   liste les questions
 Temps:
