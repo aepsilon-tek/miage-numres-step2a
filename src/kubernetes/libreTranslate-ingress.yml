@@ -1,0 +1,31 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: libretranslate-cert
+  namespace: sbu
+spec:
+  commonName: URL_TO_CHANGE
+  secretName: libretranslate-cert
+  dnsNames:
+    - URL_TO_CHANGE
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: libretranslate
+  namespace: sbu
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`URL_TO_CHANGE`)
+      kind: Rule
+      services:
+        - name: libretranslate-service
+          port: 80
+  tls:
+    secretName: libretranslate-cert
