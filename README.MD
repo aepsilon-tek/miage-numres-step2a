@@ -7,7 +7,7 @@ Vous avez 4 séances de TD/TP pour  produire un site web qui permettent de répo
 
 
 ## Environnement
-L'ensemble des  4 TD/TP sont à réaliser sur **_Gitpod_**.
+L'ensemble des  4 TD/TP sont à réaliser sur **_GitHub codespaces_**.
 Vous devez réutiliser le compte que vous avez crée durant la première séance.
 
 ## Déroulement
@@ -43,12 +43,25 @@ L'objectif est de créer une copie du projet 'miage-numres-step2a' sur votre com
 1. Fork du projet grâce au bouton **Fork**
 ![Capture d'écran](assets/Fork.png)
 
-# lancement de GitPod
+# lancement de CodeSpaces
 
-Pour utiliser  **GitPod** avec votre projet forké, il suffit d'ouvrir  l'url suivant dans votre navigateur :
-**https://gitpod.io/#** + **URL_REPO_GITHUB**
+1. Rendez-vous sur la page principale de votre projet forké
+1. En haut de cette page, cliquez sur le bouton vert <> Code
+1. Sélectionnez l'onglet Codespaces
+1. Cliquez sur Create codespace on main
+1. Attendez environ 1 à 2 minutes que l'environnement se construise (le système installe Java et les extensions nécessaires automatiquement).
 
-Avec un repo _https://github.com/miage3-ae/miage-numres-step2a_ alors l'url est : **https://gitpod.io/#https://github.com/miage3-ae/miage-numres-step2a**
+Sinon vous pouvez clicquer ici  [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=${github.repository_id})
+
+> [!TIP]
+> Fermez la fenêtre de Copilot, vous n'en avez pas besoin.
+
+> [!WARNING]
+> Assurez-vous d'avoir forké ce projet sur votre compte personnel avant de cliquer sur le bouton ci-dessus, sinon vous ne pourrez pas enregistrer (pusher) vos modifications.
+
+> [!WARNING]
+> Vous disposez de 60 heures gratuites par mois. Quand vous avez terminé votre travail, cliquez sur le nom du Codespace en bas à gauche et choisissez Stop Current Codespace.
+
 
 
 # Tester l'existant
@@ -74,6 +87,7 @@ Avec un repo _https://github.com/miage3-ae/miage-numres-step2a_ alors l'url est 
 1. Commiter  & Pusher le fichier **_Questions.md_**
 
 ## En mode Natif (Optionnel)
+1. Installer GraalVM dans un terminal : sdk install java 21.0.2-graalce
 1. Construire l'application en mode Natif
 1. Lancer l'applicatif construit : `./target/api-quarkus-1.0.0-SNAPSHOT-runner`
 1. Répondre aux questions Q8 à Q11 du fichier **_Questions.md_**

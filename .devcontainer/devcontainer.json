@@ -1,0 +1,19 @@
+{
+  "name": "Environnement MIAGE (Java)",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+
+  // Personnalisation de VS Code
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.vscode-quarkus"
+      ]
+    }
+  },
+
+  // Ports Quarkus (8080) 
+  "forwardPorts": [8080],
+
+  "postAttachCommand": "./.devcontainer/check_fork.sh"
+}
