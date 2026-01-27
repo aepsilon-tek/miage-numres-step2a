@@ -133,4 +133,4 @@ Lire & suivre les instructions du fichier  README de https://github.com/aepsilon
 * ```./mvnw clean compile ``` : Compilation du projet
 * ```./mvnw quarkus:dev``` : Lancement du projet en mode developpement
 * ```./mvnw clean package``` : Construction du projet en mode JVM
-* ```./mvnw clean package -P native -Dquarkus.native.container-build=false``` : Construction du projet en mode Natif
+* ```./mvnw clean package -P native -Dquarkus.native.container-build=false -Dquarkus.native.native-image-xmx=4g``` : Construction du projet en mode Natif
