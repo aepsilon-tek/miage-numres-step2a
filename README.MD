@@ -51,7 +51,7 @@ L'objectif est de créer une copie du projet 'miage-numres-step2a' sur votre com
 1. Cliquez sur Create codespace on main
 1. Attendez environ 1 à 2 minutes que l'environnement se construise (le système installe Java et les extensions nécessaires automatiquement).
 
-Sinon vous pouvez clicquer ici  [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=${github.repository_id})
+Sinon vous pouvez cliquer ici  [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=${github.repository_id})
 
 > [!TIP]
 > Fermez la fenêtre de Copilot, vous n'en avez pas besoin.
