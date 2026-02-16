@@ -23,17 +23,17 @@ Temps: 0.018968s
 Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: La compilation native échoue systématiquement (exit status 143), même en limitant la mémoire GraalVM via quarkus.native.native-image-xmx=2g.
 
-# Q9: Temps et  taille  réponse   liste les questions
+# Q9: Temps et  taille  réponse   liste les questions NA
 Temps:
 Taille:
 
-# Q10: Temps et  taille  réponse  liste des propositions
+# Q10: Temps et  taille  réponse  liste des propositions NA
 Temps:
 Taille:
 
-# Q11: Temps et  taille  réponse  évaluation les réponses
+# Q11: Temps et  taille  réponse  évaluation les réponses NA
 Temps:
 Taille:
 
