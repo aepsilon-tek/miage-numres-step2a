@@ -1,14 +1,14 @@
 # Q1 : Décrire ce que renvoie la méthode qui liste les questions ?
-Réponse:
+Réponse: elle renvoie pour chaque langage (français, italien et anglais) la valeur de la question et le type (culture générale)
 
 # Q2 : Décrire ce que renvoie la méthode qui liste les propositions d'une question ?
-Réponse:
+Réponse: Elle renvoie des propositions de question dans des langues différentes
 
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
-Réponse:
+Réponse: elle renvoie la note d'évaluation des réponses (0 si nul)
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: 
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
 Temps:
