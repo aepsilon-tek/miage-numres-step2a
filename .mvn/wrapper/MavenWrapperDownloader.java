@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+import io.quarkus.logging.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Authenticator;
@@ -35,7 +35,7 @@ public final class MavenWrapperDownloader {
     private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("MVNW_VERBOSE"));
 
     public static void main(String[] args) {
-        log("Apache Maven Wrapper Downloader " + WRAPPER_VERSION);
+        Log.info("Apache Maven Wrapper Downloader " + WRAPPER_VERSION);
 
         if (args.length != 2) {
             System.err.println(" - ERROR wrapperUrl or wrapperJarPath parameter missing");
@@ -43,12 +43,12 @@ public final class MavenWrapperDownloader {
         }
 
         try {
-            log(" - Downloader started");
+            Log.info(" - Downloader started");
             final URL wrapperUrl = URI.create(args[0]).toURL();
             final String jarPath = args[1].replace("..", ""); // Sanitize path
             final Path wrapperJarPath = Paths.get(jarPath).toAbsolutePath().normalize();
             downloadFileFromURL(wrapperUrl, wrapperJarPath);
-            log("Done");
+            Log.info("Done");
         } catch (IOException e) {
             System.err.println("- Error downloading: " + e.getMessage());
             if (VERBOSE) {
@@ -60,7 +60,7 @@ public final class MavenWrapperDownloader {
 
     private static void downloadFileFromURL(URL wrapperUrl, Path wrapperJarPath)
             throws IOException {
-        log(" - Downloading to: " + wrapperJarPath);
+        Log.info(" - Downloading to: " + wrapperJarPath);
         if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
             final String username = System.getenv("MVNW_USERNAME");
             final char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
@@ -81,13 +81,7 @@ public final class MavenWrapperDownloader {
         } finally {
             Files.deleteIfExists(temp);
         }
-        log(" - Downloader complete");
-    }
-
-    private static void log(String msg) {
-        if (VERBOSE) {
-            System.out.println(msg);
-        }
+        Log.info(" - Downloader complete");
     }
 
 }

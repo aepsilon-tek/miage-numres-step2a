@@ -23,22 +23,22 @@ Temps: 0.022981s
 Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: 80384
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Temps: 3.121304s
+Taille: 883 bytes
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps: 0.932411s
+Taille: 609 bytes
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps: 0.001693s
+Taille: 1 bytes
 
 # Q12:  Proposition 1
-Description:
+Description: Spécifier le niveau de log
 Temps:
 Taille:
 
