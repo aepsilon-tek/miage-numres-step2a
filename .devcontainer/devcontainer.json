@@ -13,7 +13,7 @@
   },
 
   // Ports Quarkus (8080) 
-  "forwardPorts": [8080],
+  "forwardPorts": [8084],
 
   "postAttachCommand": "./.devcontainer/check_fork.sh"
 }
