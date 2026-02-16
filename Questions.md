@@ -13,19 +13,19 @@ Réponse: De même que pour la question, on reçoit les réponse attendues ainsi
 Réponse: On obtient la valeur 0
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: La valeur RSS est d'environ 188 Mo.
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 4.058800s
+Taille: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 2.083067s
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.021627s
+Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
