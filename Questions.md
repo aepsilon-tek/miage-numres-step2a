@@ -8,19 +8,19 @@ Réponse: La méthode renvoie la question traduite en plusieurs langues avec la 
 Réponse: La méthode qui évalue les réponses renvoie un nombre, un score de bonnes réponses.
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: 199632 Ko.
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 3.606572s
+Taille: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 3.784802s
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.020632s
+Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
@@ -38,14 +38,14 @@ Temps:
 Taille:
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Pour listProposals : Rechercher uniquement les propositions de questions utilisées au lieu de parcourir toute la liste.
+Time: 8.805770s
+Size: 2456 bytes
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: Pour l'évaluation des propositions, n'évaluer que les proposions faites.
+Time: 0.972046s
+Size: 1 bytes
 
 # Q14:  Proposition 3
 Description:
