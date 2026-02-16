@@ -17,6 +17,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @ApplicationScoped
 public class TranslateService {
@@ -29,6 +31,8 @@ public class TranslateService {
     @Inject
     @RestClient
     TranslateClient client;
+
+    private final Map<String, String> translationCache = new ConcurrentHashMap<>();
 
     public List<QuestionDto> translateQuestions(List<Question> questions) {
         List<QuestionDto> result = new ArrayList<>();
@@ -43,14 +47,8 @@ public class TranslateService {
             QuestionDto q = new QuestionDto(currentQuestion,defaultLanguage);
             String[] languages = translatedLanguage.split(",");
             for(String currentLanguage:languages){
-                TranslateRequest r = new TranslateRequest();
-                r.setSource(defaultLanguage);
-                r.setTarget(currentLanguage);
-                r.setQ(currentQuestion.label);
-                r.setAlternatives(0);
-                r.setFormat("text");
-                TranslateResponse rep = client.translate(r);
-                q.translations.add(new TranslationDto(rep,currentLanguage));
+                String translatedValue = translateText(defaultLanguage, currentLanguage, currentQuestion.label);
+                q.translations.add(new TranslationDto(translatedValue,currentLanguage));
             }//End For Each Question
 
             q.catgory = translateOneCategory(currentQuestion.category);
@@ -62,14 +60,8 @@ public class TranslateService {
         CategoryDto c = new CategoryDto(currentCategory,defaultLanguage);
         String[] languages = translatedLanguage.split(",");
         for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentCategory.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
-            c.translations.add(new TranslationDto(rep,currentLanguage));
+            String translatedValue = translateText(defaultLanguage, currentLanguage, currentCategory.label);
+            c.translations.add(new TranslationDto(translatedValue,currentLanguage));
         }//End For Each Question
         return c;
     }
@@ -88,18 +80,32 @@ public class TranslateService {
         ProposalDto p = new ProposalDto(currentProposal,defaultLanguage);
         String[] languages = translatedLanguage.split(",");
         for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentProposal.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
-            p.translations.add(new TranslationDto(rep,currentLanguage));
+            String translatedValue = translateText(defaultLanguage, currentLanguage, currentProposal.label);
+            p.translations.add(new TranslationDto(translatedValue,currentLanguage));
         }//End For Each Question
 
         p.question = translateOneQuestion(currentProposal.question);
         return p;
+    }
+
+    private String translateText(String sourceLanguage, String targetLanguage, String text) {
+        if (text == null || text.isBlank()) {
+            return text;
+        }
+        if (sourceLanguage.equals(targetLanguage)) {
+            return text;
+        }
+        String cacheKey = sourceLanguage + "|" + targetLanguage + "|" + text;
+        return translationCache.computeIfAbsent(cacheKey, key -> {
+            TranslateRequest r = new TranslateRequest();
+            r.setSource(sourceLanguage);
+            r.setTarget(targetLanguage);
+            r.setQ(text);
+            r.setAlternatives(0);
+            r.setFormat("text");
+            TranslateResponse rep = client.translate(r);
+            return rep.getTranslatedText();
+        });
     }
 
 }

@@ -34,4 +34,9 @@ public class TranslationDto {
         language=lg;
         value = r.getTranslatedText();
     }
+
+    public TranslationDto(String translatedValue, String lg){
+        language=lg;
+        value = translatedValue;
+    }
 }
