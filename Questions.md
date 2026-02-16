@@ -16,18 +16,19 @@ Autrement dit, elle compte combien de propositions soumises correspondent à cel
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
+194 Mo
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 5.6 secondes
+Taille: 883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps: 2.7 secondes
+Taille: 609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps: 0.0206 seconde
+Taille: 1 byte
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
