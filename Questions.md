@@ -1,12 +1,12 @@
 # Q1 : Décrire ce que renvoie la méthode qui liste les questions ?
 Réponse:
-
+la méthode http://localhost:8080/quizz/questions retourne un tableau JSON de questions avec les attributs "id":1 , "translations" qui retourne une liste de traductions en fr, en, it, puis "catgory"
 # Q2 : Décrire ce que renvoie la méthode qui liste les propositions d'une question ?
 Réponse:
-
+la méthode http://localhost:8080/quizz/questions/1/proposals  retourne un tableau JSON avec "id", "translations", puis "question" avec son id , et une liste de "translations" et sa "catgory
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
 Réponse:
-
+la méthode http://localhost:8080/quizz/proposals/evaluate renvoie 0 qui doit etre le score de l'évaluation (basé sur la compatibilité entre les proposals  - proposal.id.equals)
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
 
