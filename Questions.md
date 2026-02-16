@@ -1,11 +1,11 @@
 # Q1 : Décrire ce que renvoie la méthode qui liste les questions ?
-Réponse:
+Réponse: La méthode renvoie une liste de de questions traduites en français , anglais et italien.
 
 # Q2 : Décrire ce que renvoie la méthode qui liste les propositions d'une question ?
-Réponse:
+Réponse: La méthode renvoie la question traduite en plusieurs langues avec la proposition et la catégorie de la question.
 
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
-Réponse:
+Réponse: La méthode qui évalue les réponses renvoie un nombre, un score de bonnes réponses.
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
 Réponse:
