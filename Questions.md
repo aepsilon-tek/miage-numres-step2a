@@ -47,20 +47,29 @@ Taille:
 
 # Q12:  Proposition 1
 Description:
-Temps:
-Taille:
+Limiter la quantité de données renvoyées par l’API /quizz/questions en ne récupérant que les champs nécessaires (id et value) plutôt que toutes les traductions et la catégorie.
+
+Temps: 5.6 secondes -> 4.9 secondes
+Taille: 883 bytes -> 883 bytes
 
 # Q13:  Proposition 2
 Description:
-Temps:
-Taille:
+Mettre un cache simple pour les propositions afin de ne pas relire la base de données à chaque requête.
+
+Temps: 2.7 secondes -> 2.7 secondes (1ère fois donc inchangé) ->1.9 seconde (deuxième fois)
+Taille: 609 bytes -> 609 bytes -> 609 bytes
 
 # Q14:  Proposition 3
 Description:
-Temps:
-Taille:
+Simplifier l’évaluation des réponses en supprimant les boucles inutiles et les transformations intermédiaires.
+
+Temps: 0.0206 seconde -> 0.009596s
+Taille: 1 byte -> 1 byte
+
 
 # Q15:  Proposition 4
 Description:
-Temps:
-Taille:
+Désactiver le logging SQL détaillé en mode dev pour réduire l’empreinte mémoire et le bruit dans les logs.
+
+Temps: un peu moins
+Taille: inchangée

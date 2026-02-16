@@ -7,6 +7,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.aepsilon.dto.ProposalDto;
 import org.aepsilon.dto.QuestionDto;
+import org.aepsilon.dto.QuestionSimpleDto;
 import org.aepsilon.service.QuizzService;
 import org.jboss.resteasy.reactive.RestPath;
 
@@ -23,13 +24,13 @@ public class QuizzResource {
      * curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions
      * @return
      */
-    @GET()
+    @GET
     @Path("questions")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionDto> listQuestion(){
-        Log.infof("In listQuestion");
-        return quizzService.listAllQuestions();
+    public List<QuestionSimpleDto> listQuestion(){
+        return quizzService.listAllQuestionsSimple();
     }
+
 
 
     /**
