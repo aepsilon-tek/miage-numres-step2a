@@ -10,12 +10,14 @@ public class ProposalDto {
     public Long id;
     public List<TranslationDto> translations;
 
-    public QuestionDto question;
+    public Long questionId;
 
     public ProposalDto(){}
 
     public ProposalDto(Proposal p, String lg){
         id = p.id;
+        questionId = (p.question != null) ? p.question.id : null;
+        
         translations =  new ArrayList<>();
         translations.add(new TranslationDto(p,lg));
     }
