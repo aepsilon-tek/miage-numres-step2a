@@ -1,8 +1,5 @@
 package org.aepsilon.dto;
 
-import org.aepsilon.orm.Category;
-import org.aepsilon.orm.Proposal;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +11,9 @@ public class ProposalDto {
 
     public ProposalDto(){}
 
-    public ProposalDto(Proposal p, String lg){
-        id = p.id;
+    public ProposalDto(Long id, String label, String lg){
+        this.id = id;
         translations =  new ArrayList<>();
-        translations.add(new TranslationDto(p,lg));
+        translations.add(new TranslationDto(label,lg));
     }
 }

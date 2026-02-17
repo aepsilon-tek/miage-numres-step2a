@@ -43,9 +43,9 @@ Temps:1.403401s
 Taille:883
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description:utilsier les Dto et plus les orm directement
+Temps:2.335435s
+Taille:609 bytes
 
 # Q14:  Proposition 3
 Description:
