@@ -43,7 +43,7 @@ Temps:
 Taille:
 
 # Q13:  Proposition 2
-Description: Dans src/main/java/org/aepsilon/service/TranslateService.java et la fonction translateOneProposal, optimiser la boucle pour ne garder que ce qui change à chaque itération
+Description: 'Dans src/main/java/org/aepsilon/service/TranslateService.java' et la fonction translateOneProposal, optimiser la boucle pour ne garder que ce qui change à chaque itération
 Temps:
 Taille:
 
@@ -53,6 +53,6 @@ Temps:
 Taille:
 
 # Q15:  Proposition 4
-Description:
+Description: dans 'src/main/java/org/aepsilon/service/QuizzService.java', optimiser la fonction listProposals pour ne récupérer que l'item où l'ID est le même
 Temps:
 Taille:
