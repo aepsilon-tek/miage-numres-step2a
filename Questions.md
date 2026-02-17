@@ -43,21 +43,21 @@ Temps:
 Taille:
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Utiliser une requête filtrée au lieu de listAll() dans QuizzService, au lieu de filtré en Java on filtre à la requête.
+Temps: 2.675625s
+Taille: 883 bytes
 
 # Q13:  Proposition 2
-Description:
+Description: evaluateProposals : Requête ciblée par IDs au lieu de listAll(), même problème que précedemment
 Temps:
 Taille:
 
 # Q14:  Proposition 3
-Description:
-Temps:
+Description: Lors de l’affichage d’une liste de questions, si plusieurs questions partagent la même catégorie, la fonction translateOneCategory appelle l’API de traduction externe à plusieurs reprises pour une seule et même catégorie. On utilise des maps pour faire un cache.
+Temps: 0.028874s
 Taille:
 
 # Q15:  Proposition 4
-Description:
+Description:Ne pas traduire la question dans chaque proposal dans translateOneProposal
 Temps:
-Taille:
+Taille: 

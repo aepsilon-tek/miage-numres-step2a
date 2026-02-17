@@ -32,31 +32,16 @@ public class QuizzService {
     }
 
     public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
+        List<Proposal> result = Proposal.list("question.id", questionId);
         return translateService.translateProposals(result);
     }
 
 
     public Long evaluateProposals(List<ProposalDto> proposalsInput){
-        List<Proposal> proposals =  Proposal.listAll();
-        Long count =0L;
-        for(Proposal currentProposal:proposals){
-            for(ProposalDto currentProposalDto:proposalsInput){
-                if(currentProposal.id.equals(currentProposalDto.id)){
-                    if(currentProposal.correct) {
-                        count++;
-                    }
-                }
-            }
+        List<Long> ids = new ArrayList<>();
+        for(ProposalDto p : proposalsInput){
+            ids.add(p.id);
         }
-
-        return count;
+        return Proposal.count("id in ?1 and correct = true", ids);
     }
-
 }
