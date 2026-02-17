@@ -43,12 +43,12 @@ Temps:
 Taille:
 
 # Q13:  Proposition 2
-Description:
+Description: Dans src/main/java/org/aepsilon/service/TranslateService.java et la fonction translateOneProposal, optimiser la boucle pour ne garder que ce qui change à chaque itération
 Temps:
 Taille:
 
 # Q14:  Proposition 3
-Description:
+Description: FetchType.EAGER to FetchType.LAZY
 Temps:
 Taille:
 
