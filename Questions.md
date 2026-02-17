@@ -40,12 +40,12 @@ Temps:
 Taille:
 
 # Q12:  Proposition 1
-Description:
+Description: FetchType.EAGER to FetchType.LAZY
 Temps:
 Taille:
 
 # Q13:  Proposition 2
-Description:
+Description: Optimiser la methode listProposals en utilisant un filtre SQL au lieu d'un filtre dans le back, il faut rester dans la base de données ; puis ne pas importer toutes les data uniquement celles qui sont nécéssaires.
 Temps:
 Taille:
 
