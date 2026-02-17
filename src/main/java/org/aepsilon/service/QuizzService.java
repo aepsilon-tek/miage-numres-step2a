@@ -31,7 +31,7 @@ public class QuizzService {
         return translateService.translateOneQuestion(q);
     }
 
-    public List<ProposalDto> listProposals(Long questionId){
+    /* public List<ProposalDto> listProposals(Long questionId){
         List<Proposal> proposals =  Proposal.listAll();
         List<Proposal> result = new ArrayList<>();
         for(Proposal currentProposal:proposals){
@@ -40,10 +40,19 @@ public class QuizzService {
             }
         }
         return translateService.translateProposals(result);
-    }
+    } */
+
+         public List<ProposalDto> listProposals(Long questionId){
+        // MODIFICATION : Utilisation de la méthode list de Panache avec une requête filtrée
+        // On ne récupère que les propositions liées à la question donnée.
+        List<Proposal> proposals = Proposal.list("question.id", questionId);
+        
+        // Plus besoin de la boucle de filtrage manuel ni de l'ArrayList intermédiaire
+        return translateService.translateProposals(proposals);
+    } 
 
 
-    public Long evaluateProposals(List<ProposalDto> proposalsInput){
+    /* public Long evaluateProposals(List<ProposalDto> proposalsInput){
         List<Proposal> proposals =  Proposal.listAll();
         Long count =0L;
         for(Proposal currentProposal:proposals){
@@ -57,6 +66,14 @@ public class QuizzService {
         }
 
         return count;
-    }
+    } */
+
+public Long evaluateProposals(List<ProposalDto> proposalsInput){
+    if (proposalsInput == null || proposalsInput.isEmpty()) return 0L;
+    List<Long> ids = new ArrayList<>();
+    for (ProposalDto p : proposalsInput) ids.add(p.id);
+    // Optimisation :
+    return Proposal.count("id in ?1 and correct = true", ids);
+}
 
 }

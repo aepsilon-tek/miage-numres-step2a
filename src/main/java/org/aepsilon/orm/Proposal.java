@@ -11,7 +11,8 @@ public class Proposal extends PanacheEntity {
     public String label;
     public boolean correct;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    
+    @ManyToOne(fetch = /*FetchType.EAGER*/ FetchType.LAZY)
     @JoinColumn(name = "QUESTION_ID",nullable = false)
     public Question question;
 }
