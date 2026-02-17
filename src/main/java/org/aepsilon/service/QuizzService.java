@@ -22,7 +22,13 @@ public class QuizzService {
     @Inject
     TranslateService translateService;
     public List<QuestionDto> listAllQuestions(){
-        List<Question> questions =  Question.listAll();
+        List<Question> questions = Question.listAll();
+        return translateService.translateQuestions(questions);
+    }
+
+    // Eco-conception: Version paginée pour éviter de charger toutes les données en mémoire
+    public List<QuestionDto> listAllQuestionsPaginated(int page, int size){
+        List<Question> questions = Question.findAllPaginated(page, size);
         return translateService.translateQuestions(questions);
     }
 
@@ -32,31 +38,22 @@ public class QuizzService {
     }
 
     public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
-        return translateService.translateProposals(result);
+        List<Proposal> proposals = Proposal.list("question.id", questionId);
+        return translateService.translateProposals(proposals);
     }
 
 
     public Long evaluateProposals(List<ProposalDto> proposalsInput){
-        List<Proposal> proposals =  Proposal.listAll();
-        Long count =0L;
-        for(Proposal currentProposal:proposals){
-            for(ProposalDto currentProposalDto:proposalsInput){
-                if(currentProposal.id.equals(currentProposalDto.id)){
-                    if(currentProposal.correct) {
-                        count++;
-                    }
-                }
-            }
+        if(proposalsInput == null || proposalsInput.isEmpty()) {
+            return 0L;
         }
-
-        return count;
+        
+        List<Long> ids = proposalsInput.stream()
+            .map(p -> p.id)
+            .toList();
+        
+        // Requête optimisée: compte directement les propositions correctes parmi les IDs fournis
+        return Proposal.count("id IN ?1 AND correct = true", ids);
     }
 
 }
