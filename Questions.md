@@ -22,8 +22,8 @@ Taille: 609 bytes
 Temps: 0.021206s
 Taille: 1 bytes
 
-# Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+# Q8 : Empreinte mémoire en mode natif ? - mode natif ne s'execute pas
+Réponse: 
 
 # Q9: Temps et  taille  réponse   liste les questions
 Temps:
@@ -37,22 +37,45 @@ Taille:
 Temps:
 Taille:
 
-# Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+# Q12:  Proposition 1 :
+Description: 
+Ajouter la méthode "listProposals" qui va récuperer toutes les propositions avec listAll() 
 
-# Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Solution: utiliser une requête filtrée pour récupérer uniquement les propositions concernant la question au niveau de la BD.
+Ca permet de Réduire la consommation mémoire, requête BD plus efficace, moins de données transférées.
 
-# Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Taille avant: 609 bytes 
+Temps après: 1.976666s
+Taille après: 2456 bytes
 
-# Q15:  Proposition 4
+# Q13:  Proposition 2 :
 Description:
-Temps:
+La méthode evaluateProposals() récupère TOUTES les propositions avec listAll() 
+et les compare avec les propositions en entrée via deux boucle. Cela est très inefficace 
+en mémoire et CPU. Solution: tout dabord extraire les IDs des propositions en entrée puis utiliser une requête pour récupérer uniquement les pertinentes et finalement construire une HashMap pour lookup.
+
+Temps avant: 0.021206s (avec cache)
+Taille avant: 1 bytes
+Temps après: 0.008102s (sans cache initiale), 0.016210s (avec cache)
+Taille après: 1 bytes
+Amélioration: plus rapide
+
+# Q14:  Proposition 3 
+Description:
+BUGS et problèmes identifiés:
+ La méthode translateOneProposal() appelle translateOneQuestion() à la fin, qui prend du temps et Les traductions identiques sont répétées 2+ fois sans être réutilisées
+Solution: 
+Ajouter des Maps en cache (translationCache, categoryCache, questionCache) au niveau service
+Aussi avant appel réseau, vérifier le cache d'abord
+Réutiliser les questions/catégories déjà traduites dans translateProposals()
+
+Temps avant (listAllQuestions): 4.466735s
+Taille avant: 883 bytes
+Temps après (listAllQuestions): 3.217063s
+Taille après: 883 bytes
+Amélioration: plus rapide
+
+# Q15:  Proposition 4 - Ajouter pagination listAllQuestions
+Description: 
+Temps: 
 Taille:

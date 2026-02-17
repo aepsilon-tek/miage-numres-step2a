@@ -25,6 +25,14 @@ public class QuizzService {
         List<Question> questions =  Question.listAll();
         return translateService.translateQuestions(questions);
     }
+    
+    public List<QuestionDto> listAllQuestions(int page, int size){
+        // Optimisation éco-conception : pagination pour réduire mémoire et taille réponse
+        // Utiliser une requête paginée au niveau DB
+        long offset = (long) page * size;
+        List<Question> questions = Question.find("").range((int)offset, (int)(offset + size)).list();
+        return translateService.translateQuestions(questions);
+    }
 
     public QuestionDto loadQuestionById(Long questionId){
         Question q = Question.findById(questionId);
@@ -32,27 +40,30 @@ public class QuizzService {
     }
 
     public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
+        List<Proposal> result = Proposal.find("question.id", questionId).list();
         return translateService.translateProposals(result);
     }
 
 
     public Long evaluateProposals(List<ProposalDto> proposalsInput){
-        List<Proposal> proposals =  Proposal.listAll();
-        Long count =0L;
-        for(Proposal currentProposal:proposals){
-            for(ProposalDto currentProposalDto:proposalsInput){
-                if(currentProposal.id.equals(currentProposalDto.id)){
-                    if(currentProposal.correct) {
-                        count++;
-                    }
-                }
+        List<Long> proposalIds = proposalsInput.stream()
+                .map(p -> p.id)
+                .collect(java.util.stream.Collectors.toList());
+        
+        if(proposalIds.isEmpty()) {
+            return 0L;
+        }
+        
+        List<Proposal> proposals = Proposal.find("id IN ?1", proposalIds).list();
+        
+        java.util.Map<Long, Proposal> proposalMap = proposals.stream()
+                .collect(java.util.stream.Collectors.toMap(p -> p.id, p -> p));
+        
+        Long count = 0L;
+        for(ProposalDto currentProposalDto : proposalsInput){
+            Proposal proposal = proposalMap.get(currentProposalDto.id);
+            if(proposal != null && proposal.correct) {
+                count++;
             }
         }
 

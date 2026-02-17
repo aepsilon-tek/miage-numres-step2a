@@ -20,15 +20,17 @@ public class QuizzResource {
     QuizzService quizzService;
 
     /**
-     * curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" http://localhost:8080/quizz/questions
+     * curl -w "\nTime: %{time_total}s\nSize: %{size_download} bytes\n" "http://localhost:8080/quizz/questions?page=0&size=10"
      * @return
      */
     @GET()
     @Path("questions")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionDto> listQuestion(){
-        Log.infof("In listQuestion");
-        return quizzService.listAllQuestions();
+    public List<QuestionDto> listQuestion(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("size") @DefaultValue("100") int size){
+        Log.infof("In listQuestion with page=%d, size=%d", page, size);
+        return quizzService.listAllQuestions(page, size);
     }
 
 
