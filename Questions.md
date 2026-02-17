@@ -53,6 +53,6 @@ Time: 3.292708s
 Size: 625 bytes
 
 # Q15:  Proposition 4
-Description: 
+Description: FetchType.EAGER to FetchType.LAZY
 Temps:
 Taille:
