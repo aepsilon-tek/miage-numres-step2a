@@ -12,6 +12,9 @@ public class QuestionDto {
     public CategoryDto catgory;
 
     public QuestionDto(){}
+    public QuestionDto(Question q){
+        id = q.id;
+    }
 
     public QuestionDto(Question q,String lg){
         id = q.id;

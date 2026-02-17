@@ -23,7 +23,7 @@ Temps: 0.020632s
 Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: Erreur 143.
 
 # Q9: Temps et  taille  réponse   liste les questions
 Temps:
@@ -48,11 +48,11 @@ Time: 0.972046s
 Size: 1 bytes
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: Peut etre traduire seulement dans les langues demandées.(modification dans application.properties)
+Time: 3.292708s
+Size: 625 bytes
 
 # Q15:  Proposition 4
-Description:
+Description: 
 Temps:
 Taille:
