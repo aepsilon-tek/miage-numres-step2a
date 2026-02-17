@@ -23,24 +23,24 @@ Temps:0.018300s
 Taille:1
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: impossible
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
+Temps:impossible
 Taille:
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
+Temps:impossible
 Taille:
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
+Temps:impossible
 Taille:
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Mettre en lazy les Relation ManyToOne
+Temps:1.403401s
+Taille:883
 
 # Q13:  Proposition 2
 Description:
