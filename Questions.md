@@ -28,19 +28,19 @@ Temps: 0.021627s
 Taille: 1 bytes
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: Pas pu lancer en natif
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
-Taille:
+Temps:Pas pu lancer en natif
+Taille:Pas pu lancer en natif
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
-Taille:
+Temps:Pas pu lancer en natif
+Taille:Pas pu lancer en natif
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
-Taille:
+Temps:Pas pu lancer en natif
+Taille:Pas pu lancer en natif
 
 # Q12:  Proposition 1
 Description: Utiliser une requête filtrée au lieu de listAll() dans QuizzService, au lieu de filtré en Java on filtre à la requête.
@@ -58,6 +58,6 @@ Temps: 0.028874s
 Taille:
 
 # Q15:  Proposition 4
-Description:Ne pas traduire la question dans chaque proposal dans translateOneProposal
+Description: passer en mode LAZY plutôt que EAGER dans les requêtes SQL
 Temps:
 Taille: 
