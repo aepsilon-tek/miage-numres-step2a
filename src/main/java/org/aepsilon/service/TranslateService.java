@@ -41,17 +41,6 @@ public class TranslateService {
 
     public QuestionDto translateOneQuestion(Question currentQuestion) {
             QuestionDto q = new QuestionDto(currentQuestion,defaultLanguage);
-            String[] languages = translatedLanguage.split(",");
-            for(String currentLanguage:languages){
-                TranslateRequest r = new TranslateRequest();
-                r.setSource(defaultLanguage);
-                r.setTarget(currentLanguage);
-                r.setQ(currentQuestion.label);
-                r.setAlternatives(0);
-                r.setFormat("text");
-                TranslateResponse rep = client.translate(r);
-                q.translations.add(new TranslationDto(rep,currentLanguage));
-            }//End For Each Question
 
             q.catgory = translateOneCategory(currentQuestion.category);
         return q;
@@ -60,17 +49,6 @@ public class TranslateService {
 
     public CategoryDto translateOneCategory(Category currentCategory) {
         CategoryDto c = new CategoryDto(currentCategory,defaultLanguage);
-        String[] languages = translatedLanguage.split(",");
-        for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentCategory.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
-            c.translations.add(new TranslationDto(rep,currentLanguage));
-        }//End For Each Question
         return c;
     }
 
@@ -86,19 +64,6 @@ public class TranslateService {
 
     public ProposalDto translateOneProposal(Proposal currentProposal) {
         ProposalDto p = new ProposalDto(currentProposal,defaultLanguage);
-        String[] languages = translatedLanguage.split(",");
-        for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentProposal.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
-            p.translations.add(new TranslationDto(rep,currentLanguage));
-        }//End For Each Question
-
-        p.question = translateOneQuestion(currentProposal.question);
         return p;
     }
 

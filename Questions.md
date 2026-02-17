@@ -42,21 +42,40 @@ Temps:
 Taille:
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: /quizz/questions/1/proposals renvoie une proposition + la question complète à l’intérieur, on peut profiter du dto ProposalDto pour modifier la question avec un champ plus léger
+Dans ProposalDto on a maitnenant public Long questionId;
+dans QuizzService on a uniqumeent  List<Proposal> result = Proposal.find("question.id", questionId).list();
+
+
+Temps: 1.164119s
+Taille: 616 bytes
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description: La traduction est appelée à chaque requête et pour chaque entité, alors que le client demande une applicaiton en frnaçais, donc nous avons des traductions redondantes, en plus dans listAllQuestions() on a List<Question> questions = Question.listAll();
+De plus on a aussi la traduction automatique dans /proposals
+Je supprime donc les boucles dans TranslateOneQuestion, TranslateOneCategory, TranslateOneProposal
+
+pour /Questions
+Temps: 2.581848s
+Taille: 558 bytes
+
+pour /Proposals
+Time: 0.792420s
+Size: 315 bytes
 
 # Q14:  Proposition 3
-Description:
-Temps:
-Taille:
+Description: la méthode evaluateProposals() charge toute la table proposal et donc inutilement des colonnes non utilisées.
+J'ai modifié la méthode pour ne charger que les IDs
+Time: 0.006049s
+Size: 1 bytes
 
 # Q15:  Proposition 4
-Description:
-Temps:
-Taille:
+Description: Passer de Fetch EAGER à LAZY dans Proposal et Question, parceque Hibernate va aussi charger Question Category, alors que dans evaluateProposals on a besoinunqiuement de p.correct
+
+/Questions :
+Time: 0.021165s
+Size: 380 bytes
+
+proposals
+Temps: 0.680424s
+Taille: 315 bytes 
