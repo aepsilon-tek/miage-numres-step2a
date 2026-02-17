@@ -32,13 +32,7 @@ public class QuizzService {
     }
 
     public List<ProposalDto> listProposals(Long questionId){
-        List<Proposal> proposals =  Proposal.listAll();
-        List<Proposal> result = new ArrayList<>();
-        for(Proposal currentProposal:proposals){
-            if(currentProposal.id.equals(questionId)){
-                result.add(currentProposal);
-            }
-        }
+        List<Proposal> result = Proposal.find("question.id", questionId).list();
         return translateService.translateProposals(result);
     }
 

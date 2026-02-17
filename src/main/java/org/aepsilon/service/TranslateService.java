@@ -87,6 +87,25 @@ public class TranslateService {
     public ProposalDto translateOneProposal(Proposal currentProposal) {
         ProposalDto p = new ProposalDto(currentProposal,defaultLanguage);
         String[] languages = translatedLanguage.split(",");
+        TranslateRequest r = new TranslateRequest();
+        r.setSource(defaultLanguage);
+        r.setQ(currentProposal.label);
+        r.setAlternatives(0);
+        r.setFormat("text");
+        for(String currentLanguage:languages){
+            r.setTarget(currentLanguage);
+            TranslateResponse rep = client.translate(r);
+            p.translations.add(new TranslationDto(rep,currentLanguage));
+        }//End For Each Question
+
+        p.question = translateOneQuestion(currentProposal.question);
+        return p;
+    }
+
+/*
+    public ProposalDto translateOneProposal(Proposal currentProposal) {
+        ProposalDto p = new ProposalDto(currentProposal,defaultLanguage);
+        String[] languages = translatedLanguage.split(",");
         for(String currentLanguage:languages){
             TranslateRequest r = new TranslateRequest();
             r.setSource(defaultLanguage);
@@ -101,5 +120,7 @@ public class TranslateService {
         p.question = translateOneQuestion(currentProposal.question);
         return p;
     }
+*/
+
 
 }
