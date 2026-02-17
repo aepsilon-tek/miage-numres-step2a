@@ -1,10 +1,6 @@
 package org.aepsilon.dto;
 
-import org.aepsilon.orm.Category;
-import org.aepsilon.orm.Question;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryDto {
     public List<TranslationDto> translations;
@@ -12,8 +8,8 @@ public class CategoryDto {
 
     public CategoryDto(){}
 
-    public CategoryDto(Category c,String lg){
+    public CategoryDto(String label,String lg){
         translations =  new ArrayList<>();
-        translations.add(new TranslationDto(c,lg));
+        translations.add(new TranslationDto(label,lg));
     }
 }

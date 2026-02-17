@@ -1,7 +1,5 @@
 package org.aepsilon.dto;
 
-import org.aepsilon.orm.Question;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +11,9 @@ public class QuestionDto {
 
     public QuestionDto(){}
 
-    public QuestionDto(Question q,String lg){
-        id = q.id;
+    public QuestionDto(Long id, String label, String lg){
+        this.id = id;
         translations =  new ArrayList<>();
-        translations.add(new TranslationDto(q,lg));
+        translations.add(new TranslationDto(label,lg));
     }
 }

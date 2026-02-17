@@ -1,51 +1,51 @@
 # Q1 : Décrire ce que renvoie la méthode qui liste les questions ?
-Réponse:
+Réponse: elle traduit plusieurs phrase en plusieurs langue (FR,EN,it)
 
 # Q2 : Décrire ce que renvoie la méthode qui liste les propositions d'une question ?
-Réponse:
+Réponse: elle renvoie le bresil avec differente traduction, + les questions 
 
 # Q3 : Décrire ce que renvoie la méthode qui évalue des réponses ?
-Réponse:
+Réponse: elle renvoie 0 ? 
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: La vleur RSS est de 2432 en KiB
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 6.400929s
+Taille:883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps:2.534912s
+Taille:609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps:0.018300s
+Taille:1
 
 # Q8 : Empreinte mémoire en mode natif ?
-Réponse:
+Réponse: impossible
 
 # Q9: Temps et  taille  réponse   liste les questions
-Temps:
+Temps:impossible
 Taille:
 
 # Q10: Temps et  taille  réponse  liste des propositions
-Temps:
+Temps:impossible
 Taille:
 
 # Q11: Temps et  taille  réponse  évaluation les réponses
-Temps:
+Temps:impossible
 Taille:
 
 # Q12:  Proposition 1
-Description:
-Temps:
-Taille:
+Description: Mettre en lazy les Relation ManyToOne
+Temps:1.403401s
+Taille:883
 
 # Q13:  Proposition 2
-Description:
-Temps:
-Taille:
+Description:utilsier les Dto et plus les orm directement
+Temps:2.335435s
+Taille:609 bytes
 
 # Q14:  Proposition 3
 Description:
