@@ -8,19 +8,19 @@ Réponse: elle renvoie le bresil avec differente traduction, + les questions
 Réponse: elle renvoie 0 ? 
 
 # Q4 : Quelle est la valeur de la RSS utilisée par l'api quarkus en mode JVM ?
-Réponse:
+Réponse: La vleur RSS est de 2432 en KiB
 
 # Q5: Quel est le temps et la taille de la réponse  de la méthode qui liste les questions
-Temps:
-Taille:
+Temps: 6.400929s
+Taille:883 bytes
 
 # Q6: Quel est le temps et la taille de la réponse  de la méthode qui liste les propositions d'une question
-Temps:
-Taille:
+Temps:2.534912s
+Taille:609 bytes
 
 # Q7: Quel est le temps et la taille de la réponse  de la méthode qui évalue les réponses
-Temps:
-Taille:
+Temps:0.018300s
+Taille:1
 
 # Q8 : Empreinte mémoire en mode natif ?
 Réponse:
