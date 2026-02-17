@@ -17,6 +17,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @ApplicationScoped
 public class TranslateService {
@@ -32,9 +34,27 @@ public class TranslateService {
 
     public List<QuestionDto> translateQuestions(List<Question> questions) {
         List<QuestionDto> result = new ArrayList<>();
-        for(Question currentQuestion:questions){
-            result.add(translateOneQuestion(currentQuestion));
-        }//End For Each
+        Map<Long, CategoryDto> categoryCache = new HashMap<>();
+        for(Question currentQuestion : questions){
+            QuestionDto q = new QuestionDto(currentQuestion, defaultLanguage);
+            String[] languages = translatedLanguage.split(",");
+            for(String currentLanguage : languages){
+                TranslateRequest r = new TranslateRequest();
+                r.setSource(defaultLanguage);
+                r.setTarget(currentLanguage);
+                r.setQ(currentQuestion.label);
+                r.setAlternatives(0);
+                r.setFormat("text");
+                TranslateResponse rep = client.translate(r);
+                q.translations.add(new TranslationDto(rep, currentLanguage));
+            }
+            // Cache par catégorie
+            if(!categoryCache.containsKey(currentQuestion.category.id)){
+                categoryCache.put(currentQuestion.category.id, translateOneCategory(currentQuestion.category));
+            }
+            q.catgory = categoryCache.get(currentQuestion.category.id);
+            result.add(q);
+        }
         return result;
     }
 
