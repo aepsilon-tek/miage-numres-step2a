@@ -14,6 +14,7 @@ import org.aepsilon.web.client.TranslateRequest;
 import org.aepsilon.web.client.TranslateResponse;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import io.quarkus.cache.CacheResult; // Maintenant ça marchera grâce à l'extension
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,76 +31,71 @@ public class TranslateService {
     @RestClient
     TranslateClient client;
 
+    // --- NOUVELLE MÉTHODE CACHÉE ---
+    @CacheResult(cacheName = "translations")
+    public TranslateResponse callTranslationApi(String q, String source, String target) {
+        TranslateRequest r = new TranslateRequest();
+        r.setSource(source);
+        r.setTarget(target);
+        r.setQ(q);
+        r.setAlternatives(0);
+        r.setFormat("text");
+        return client.translate(r);
+    }
+    // -------------------------------
+
     public List<QuestionDto> translateQuestions(List<Question> questions) {
         List<QuestionDto> result = new ArrayList<>();
         for(Question currentQuestion:questions){
             result.add(translateOneQuestion(currentQuestion));
-        }//End For Each
+        }
         return result;
     }
 
-
     public QuestionDto translateOneQuestion(Question currentQuestion) {
-            QuestionDto q = new QuestionDto(currentQuestion,defaultLanguage);
-            String[] languages = translatedLanguage.split(",");
-            for(String currentLanguage:languages){
-                TranslateRequest r = new TranslateRequest();
-                r.setSource(defaultLanguage);
-                r.setTarget(currentLanguage);
-                r.setQ(currentQuestion.label);
-                r.setAlternatives(0);
-                r.setFormat("text");
-                TranslateResponse rep = client.translate(r);
-                q.translations.add(new TranslationDto(rep,currentLanguage));
-            }//End For Each Question
+        QuestionDto q = new QuestionDto(currentQuestion,defaultLanguage);
+        String[] languages = translatedLanguage.split(",");
+        for(String currentLanguage:languages){
+            // UTILISATION DU CACHE
+            TranslateResponse rep = callTranslationApi(currentQuestion.label, defaultLanguage, currentLanguage);
+            q.translations.add(new TranslationDto(rep,currentLanguage));
+        }
 
-            q.catgory = translateOneCategory(currentQuestion.category);
+        q.catgory = translateOneCategory(currentQuestion.category);
         return q;
     }
-
 
     public CategoryDto translateOneCategory(Category currentCategory) {
         CategoryDto c = new CategoryDto(currentCategory,defaultLanguage);
         String[] languages = translatedLanguage.split(",");
         for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentCategory.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
+            // UTILISATION DU CACHE
+            TranslateResponse rep = callTranslationApi(currentCategory.label, defaultLanguage, currentLanguage);
             c.translations.add(new TranslationDto(rep,currentLanguage));
-        }//End For Each Question
+        }
         return c;
     }
-
 
     public List<ProposalDto> translateProposals(List<Proposal> proposals) {
         List<ProposalDto> result = new ArrayList<>();
         for(Proposal currentProposal:proposals){
             result.add(translateOneProposal(currentProposal));
-        }//End For Each
+        }
         return result;
     }
-
 
     public ProposalDto translateOneProposal(Proposal currentProposal) {
         ProposalDto p = new ProposalDto(currentProposal,defaultLanguage);
         String[] languages = translatedLanguage.split(",");
         for(String currentLanguage:languages){
-            TranslateRequest r = new TranslateRequest();
-            r.setSource(defaultLanguage);
-            r.setTarget(currentLanguage);
-            r.setQ(currentProposal.label);
-            r.setAlternatives(0);
-            r.setFormat("text");
-            TranslateResponse rep = client.translate(r);
+            // UTILISATION DU CACHE
+            TranslateResponse rep = callTranslationApi(currentProposal.label, defaultLanguage, currentLanguage);
             p.translations.add(new TranslationDto(rep,currentLanguage));
-        }//End For Each Question
+        }
 
-        p.question = translateOneQuestion(currentProposal.question);
+        // OPTIMISATION Q14 (LAZY) : On ne charge pas la question
+        p.question = null; 
+        
         return p;
     }
-
 }
